@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mehtab | Video Editor & Graphic Designer</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #050505;
+      color: #f0f0f0;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0f0f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00E5FF;
+      border-radius: 8px;
+    }
+
+    /* global containers */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #FFFFFF 30%, #00E5FF 80%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    .section-subhead {
+      color: #b0b0b0;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+      border-left: 3px solid #00E5FF;
+      padding-left: 1rem;
+    }
+
+    /* buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+    }
+    .btn-primary {
+      background: #00E5FF;
+      color: #000;
+      box-shadow: 0 4px 12px rgba(0,229,255,0.2);
+    }
+    .btn-primary:hover {
+      background: #00c2d9;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,229,255,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #00E5FF;
+      color: #00E5FF;
+    }
+    .btn-outline:hover {
+      background: rgba(0,229,255,0.1);
+      transform: translateY(-3px);
+      border-color: #fff;
+      color: #fff;
+    }
+
+    /* navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(16px);
+      background: rgba(5,5,5,0.85);
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,229,255,0.2);
+      padding: 16px 0;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #fff, #00E5FF);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #ddd;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #00E5FF;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 80px;
+    }
+    .hero-content {
+      max-width: 800px;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .hero .highlight {
+      color: #00E5FF;
+      border-bottom: 3px solid #00E5FF;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    /* About + skills */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 2;
+    }
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: #cfcfcf;
+      font-size: 1.05rem;
+    }
+    .skills {
+      flex: 1.5;
+      background: #0c0c0c;
+      padding: 1.8rem;
+      border-radius: 28px;
+      border: 1px solid #222;
+    }
+    .skills h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: #00E5FF;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .skill-tags span {
+      background: #1a1a1a;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #eee;
+      transition: 0.2s;
+      border-left: 2px solid #00E5FF;
+    }
+
+    /* Portfolio grid */
+    .portfolio-filter {
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .portfolio-card {
+      background: #0f0f0f;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      border: 1px solid #202020;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(0,229,255,0.2);
+      border-color: #00E5FF;
+    }
+    .portfolio-img {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+    .portfolio-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .portfolio-card:hover .portfolio-img img {
+      transform: scale(1.05);
+    }
+    .overlay-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .portfolio-card:hover .overlay-icon {
+      opacity: 1;
+    }
+    .overlay-icon i {
+      font-size: 3rem;
+      color: #00E5FF;
+      text-shadow: 0 0 8px black;
+    }
+    .portfolio-info {
+      padding: 1.2rem;
+    }
+    .portfolio-info h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .portfolio-info p {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    /* services + why choose */
+    .services-grid, .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service-card, .why-card {
+      background: #0c0c0c;
+      padding: 2rem 1.5rem;
+      border-radius: 24px;
+      transition: all 0.3s;
+      border: 1px solid #222;
+      text-align: center;
+    }
+    .service-card:hover, .why-card:hover {
+      border-color: #00E5FF;
+      transform: translateY(-5px);
+    }
+    .service-card i, .why-card i {
+      font-size: 2.5rem;
+      color: #00E5FF;
+      margin-bottom: 1rem;
+    }
+    .service-card h3, .why-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    .service-card p {
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+
+    /* testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: #0c0c0c;
+      padding: 2rem;
+      border-radius: 28px;
+      border: 1px solid #2a2a2a;
+    }
+    .testimonial-card i {
+      color: #00E5FF;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      margin: 1rem 0;
+      color: #ddd;
+    }
+    .client {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+    .client .name {
+      font-weight: 700;
+    }
+    .stars {
+      color: #FFB74D;
+    }
+
+    /* contact */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .contact-form {
+      flex: 1.5;
+    }
+    .contact-info {
+      flex: 1;
+      background: #0c0c0c;
+      padding: 2rem;
+      border-radius: 28px;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: #111;
+      border: 1px solid #2c2c2c;
+      border-radius: 20px;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #00E5FF;
+      box-shadow: 0 0 0 2px rgba(0,229,255,0.2);
+    }
+    .contact-info h3 {
+      margin-bottom: 1rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1.5rem 0;
+    }
+    .contact-detail i {
+      font-size: 1.4rem;
+      width: 32px;
+      color: #00E5FF;
+    }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .social-links a {
+      color: white;
+      background: #1a1a1a;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      background: #00E5FF;
+      color: black;
+      transform: scale(1.05);
+    }
+    button[type="submit"] {
+      background: #00E5FF;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* animation fade-up */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #1f1f1f;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      section {
+        padding: 60px 0;
+      }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-buttons .btn {
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-container">
+    <div class="logo">MEHTAB<span style="color:#00E5FF;">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-content fade-up">
+      <h1>Professional Video Editor <br> & <span class="highlight">Graphic Designer</span></h1>
+      <p>I help creators and brands make engaging videos, reels, and visuals that attract audience.</p>
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn btn-primary"><i class="fas fa-eye"></i> View Portfolio</a>
+        <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Hire Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section id="about">
+    <div class="container">
+      <h2 class="fade-up">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>Hey, I'm <strong>Mehtab</strong> — a passionate freelance video editor and graphic designer with 4+ years of experience transforming raw footage into viral-worthy stories. I work closely with YouTubers, brands, and creators to deliver high-impact edits that hook viewers from the first second.</p>
+          <p>From fast-paced YouTube edits and dynamic Reels to cinematic transitions and custom thumbnails, I combine technical precision with creative storytelling. Every project is crafted to boost engagement and strengthen your brand identity.</p>
+        </div>
+        <div class="skills fade-up">
+          <h3><i class="fas fa-code-branch"></i> My Toolkit</h3>
+          <div class="skill-tags">
+            <span>YouTube Editing</span><span>Reels/Shorts</span><span>Subtitles & Captions</span>
+            <span>Seamless Transitions</span><span>Sound Design</span><span>Thumbnails</span>
+            <span>Social Media Graphics</span><span>Color Grading</span><span>Motion Graphics</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section (video + graphic design grid) -->
+  <section id="portfolio">
+    <div class="container">
+      <h2 class="fade-up">Featured Work</h2>
+      <div class="section-subhead fade-up">Video editing · Motion graphics · Visual identity</div>
+
+      <!-- Video Editing Samples -->
+      <h3 style="margin: 2rem 0 1rem 0; font-size: 1.8rem;"><i class="fas fa-video" style="color:#00E5FF;"></i> Video Projects</h3>
+      <div class="portfolio-grid fade-up">
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&auto=format" alt="YouTube Edit">
+            <div class="overlay-icon"><i class="fab fa-youtube"></i></div>
+          </div>
+          <div class="portfolio-info">
+            <h4>Cinematic YouTube Vlog</h4>
+            <p>Dynamic transitions, sound design, subtitles — 15 min highlight edit</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1536240474400-91f1c8eb6df9?w=600&auto=format" alt="Instagram Reel">
+            <div class="overlay-icon"><i class="fab fa-instagram"></i></div>
+          </div>
+          <div class="portfolio-info">
+            <h4>Viral Instagram Reel</h4>
+            <p>Fast-paced, SFX, kinetic typography — 30 sec engaging reel</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1611162616475-46b635cb91ea?w=600&auto=format" alt="YouTube Shorts">
+            <div class="overlay-icon"><i class="fab fa-tiktok"></i></div>
+          </div>
+          <div class="portfolio-info">
+            <h4>YouTube Shorts Mashup</h4>
+            <p>Vertical format, quick zooms, captions — high retention style</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graphic Design Samples -->
+      <h3 style="margin: 3rem 0 1rem 0; font-size: 1.8rem;"><i class="fas fa-palette" style="color:#00E5FF;"></i> Graphic Design</h3>
+      <div class="portfolio-grid fade-up">
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&auto=format" alt="Thumbnail">
+            <div class="overlay-icon"><i class="fas fa-image"></i></div>
+          </div>
+          <div class="portfolio-info">
+            <h4>YouTube Thumbnail Design</h4>
+            <p>High CTR thumbnails with bold text & composition</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&auto=format" alt="Social Media Post">
+            <div class="overlay-icon"><i class="fas fa-chart-line"></i></div>
+          </div>
+          <div class="portfolio-info">
+            <h4>Social Media Carousel</h4>
+            <p>Minimalist brand graphics for Instagram & LinkedIn</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&auto=format" alt="Poster">
+            <div class="overlay-icon"><i class="fas fa-pen-fancy"></i></div>
+          </div>
+          <div class="portfolio-info">
+            <h4>Event Poster & Flyers</h4>
+            <p>Creative typography, neon accents, modern layout</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <h2 class="fade-up">Services I Offer</h2>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Short Form Editing</h3>
+          <p>Reels, Shorts, TikTok — fast-paced edits, captions, sound effects, viral cuts.</p>
+        </div>
+        <div class="service-card fade-up">
+          <i class="fab fa-youtube"></i>
+          <h3>YouTube Video Editing</h3>
+          <p>Full-length edits, storytelling, B-roll, smooth transitions, color grading.</p>
+        </div>
+        <div class="service-card fade-up">
+          <i class="fas fa-thumbtack"></i>
+          <h3>Thumbnail Design</h3>
+          <p>Eye-catching YouTube thumbnails that boost CTR & views.</p>
+        </div>
+        <div class="service-card fade-up">
+          <i class="fas fa-hashtag"></i>
+          <h3>Social Media Graphics</h3>
+          <p>Custom posts, stories, banners for brand consistency & engagement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Me -->
+  <section>
+    <div class="container">
+      <h2 class="fade-up">Why Choose Me</h2>
+      <div class="why-grid">
+        <div class="why-card fade-up"><i class="fas fa-bolt"></i><h3>Fast Delivery</h3><p>Quick turnarounds without compromising quality. Revisions handled smoothly.</p></div>
+        <div class="why-card fade-up"><i class="fas fa-cut"></i><h3>Creative Editing</h3><p>Modern transitions, rhythm-based cuts, and cinematic storytelling.</p></div>
+        <div class="why-card fade-up"><i class="fas fa-headset"></i><h3>Client-Focused</h3><p>Dedicated communication, 100% satisfaction guaranteed.</p></div>
+        <div class="why-card fade-up"><i class="fas fa-tag"></i><h3>Affordable Pricing</h3><p>High-quality edits at budget-friendly rates, perfect for growing creators.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <div class="container">
+      <h2 class="fade-up">Client Love</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <i class="fas fa-quote-left"></i>
+          <p>“Mehtab transformed my raw footage into a professional YouTube video. His attention to sound design and pacing skyrocketed my retention. Highly recommended!”</p>
+          <div class="client">
+            <div><span class="name">— Riya Sharma</span><br><span>Lifestyle Creator</span></div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <i class="fas fa-quote-left"></i>
+          <p>“Working with Mehtab was a breeze. He understood my brand voice and created stunning thumbnails and reels that boosted my engagement by 200%. Will hire again!”</p>
+          <div class="client">
+            <div><span class="name">— Alex Chen</span><br><span>Brand Strategist</span></div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <i class="fas fa-quote-left"></i>
+          <p>“From YouTube editing to social media graphics, Mehtab delivers insane value. His creativity and fast delivery helped me scale my channel massively!”</p>
+          <div class="client">
+            <div><span class="name">— Jordan Taylor</span><br><span>Tech YouTuber</span></div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="fade-up">Let’s Work Together</h2>
+      <div class="contact-flex">
+        <div class="contact-form fade-up">
+          <form id="contactForm">
+            <div class="form-group"><input type="text" id="name" placeholder="Your name" required></div>
+            <div class="form-group"><input type="email" id="email" placeholder="Email address" required></div>
+            <div class="form-group"><textarea rows="4" id="message" placeholder="Tell me about your project..." required></textarea></div>
+            <button type="submit" class="btn-primary" style="border:none;"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info fade-up">
+          <h3><i class="fas fa-comment-dots"></i> Direct contact</h3>
+          <div class="contact-detail"><i class="fas fa-envelope"></i> <span>mehtab.creative@edit.com</span></div>
+          <div class="contact-detail"><i class="fab fa-whatsapp"></i> <span><a href="https://wa.me/971501234567?text=Hi%20Mehtab%2C%20I%27m%20interested%20in%20your%20editing%20services!" target="_blank" style="color:#00E5FF; text-decoration:none;">Chat on WhatsApp</a></span></div>
+          <div class="social-links">
+            <a href="https://instagram.com/mehtab.designs" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/971501234567" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:mehtab.creative@edit.com"><i class="fas fa-envelope"></i></a>
+          </div>
+          <p style="margin-top: 2rem; font-size: 0.85rem;">⭐ Quick reply within 24h — Let's create something iconic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Mehtab — Video Editor & Graphic Designer. All visions brought to life.</p>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up animations
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+  fadeElements.forEach(el => observer.observe(el));
+
+  // Contact form submit handler (demo)
+  const form = document.getElementById('contactForm');
+  if(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(name === "" || email === "" || message === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+      alert(`✨ Thanks ${name}! Your message has been sent. I'll get back to you shortly.`);
+      form.reset();
+    });
+  }
+
+  // smooth nav scroll
+  document.querySelectorAll('.nav-links a, .hero-buttons a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId && targetId !== "#" && targetId.startsWith("#")) {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
